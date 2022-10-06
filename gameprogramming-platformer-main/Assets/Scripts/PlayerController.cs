@@ -104,6 +104,7 @@ public class PlayerController : MonoBehaviour
             groundLayers);
 
         _isGrounded = raycastHit.collider != null;
+        
     }
 
     private void CheckCanJump()
@@ -137,6 +138,7 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage()
     {
         _gameManager.ProcessPlayerDeath();
+        audioController.PlayHurtSound();
     }
     
     #endregion
@@ -164,7 +166,6 @@ public class PlayerController : MonoBehaviour
             _gameManager = FindObjectOfType<GameManager>();
             _gameManager.LoadMainMenu();
         }
-        
         
     }
 

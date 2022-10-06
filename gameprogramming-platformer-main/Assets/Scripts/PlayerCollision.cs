@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private PlayerAudioController audioController;
 
     private Collider2D _playerCollider;
     private void Start()
@@ -32,7 +33,7 @@ public class PlayerCollision : MonoBehaviour
                 default:
                     break;
             }
-            
+            audioController.PlayCollectedSound();
             Debug.Log(collectibleType);
         }
 
@@ -40,6 +41,7 @@ public class PlayerCollision : MonoBehaviour
         {
             playerController.TakeDamage();
         }
+
 
         #region Unused
 

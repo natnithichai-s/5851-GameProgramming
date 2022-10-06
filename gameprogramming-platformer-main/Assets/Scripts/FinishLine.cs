@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class FinishLine : MonoBehaviour
 {
+    [SerializeField] private PlayerAudioController audioController;
+    [SerializeField] private float respawnTime = 4f;
+    
     private const string PlayerTag = "Player";
 
     private GameManager _gameManager;
@@ -14,10 +17,10 @@ public class FinishLine : MonoBehaviour
         _gameManager = FindObjectOfType<GameManager>();
     }
     
-    private void OnTriggerEnter2D(Collider2D col)
+    public void OnTriggerEnter2D(Collider2D col)
     {
         if (!col.CompareTag(PlayerTag)) return;
-
+        audioController.PlayFinishSound();
         _gameManager.LoadNextLevel();
     }
 }
