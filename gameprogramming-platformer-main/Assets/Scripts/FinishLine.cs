@@ -3,7 +3,7 @@ using UnityEngine;
 public class FinishLine : MonoBehaviour
 {
     [SerializeField] private PlayerAudioController audioController;
-    [SerializeField] private float respawnTime = 4f;
+    [SerializeField] private ParticleSystem Dust;
     
     private const string PlayerTag = "Player";
 
@@ -20,7 +20,14 @@ public class FinishLine : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D col)
     {
         if (!col.CompareTag(PlayerTag)) return;
+        GateGoBoom();
         audioController.PlayFinishSound();
         _gameManager.LoadNextLevel();
     }
+
+    public void GateGoBoom()
+    {
+        Dust.Play();
+    }
+
 }

@@ -4,6 +4,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem WalkParticle;
+    [SerializeField] private ParticleSystem JumpParticle;
+    [SerializeField] private ParticleSystem DeadParticle;
+    
     [Header("Component References")] 
     [SerializeField] private Transform player;
     [SerializeField] private Rigidbody2D rb;
@@ -28,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private bool _isGrounded;
     private bool _canJump;
     private bool _canDoubleJump;
+    private bool _hasLanded;
 
     // Private variables
     private float _coyoteTimeTimer;
@@ -61,6 +66,7 @@ public class PlayerController : MonoBehaviour
 
     private void FlipPlayerSprite()
     {
+        CreateWalkDust();
         player.localScale = _moveInput switch
         {
             > 0f => new Vector3(1, 1, 1),
@@ -104,7 +110,13 @@ public class PlayerController : MonoBehaviour
             groundLayers);
 
         _isGrounded = raycastHit.collider != null;
-        
+
+        if (!_hasLanded && _isGrounded)
+        {
+            CreateJumpDust();
+        }
+
+        _hasLanded = _isGrounded;
     }
 
     private void CheckCanJump()
@@ -137,9 +149,26 @@ public class PlayerController : MonoBehaviour
     
     public void TakeDamage()
     {
-        _gameManager.ProcessPlayerDeath();
+        CreateDeadDust();
         audioController.PlayHurtSound();
+        _gameManager.ProcessPlayerDeath();
     }
+
+    public void CreateWalkDust()
+    {
+        WalkParticle.Play();
+    }
+
+    public void CreateJumpDust()
+    {
+        JumpParticle.Play();
+    }
+
+    public void CreateDeadDust()
+    {
+        DeadParticle.Play();
+    }
+
     
     #endregion
     

@@ -6685,6 +6685,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1224453180}
     m_Modifications:
     - target: {fileID: -8682422404570236971, guid: 1688c7a5dcceac54eb2cfddede3a1be7, type: 3}
+      propertyPath: Dust
+      value: 
+      objectReference: {fileID: 864656177945535865, guid: 2cce0c2becf00b34494c2207841eb991, type: 3}
+    - target: {fileID: -8682422404570236971, guid: 1688c7a5dcceac54eb2cfddede3a1be7, type: 3}
       propertyPath: audioController
       value: 
       objectReference: {fileID: 1949296292}
@@ -6937,6 +6941,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8807623584165039417, guid: c490658654f0f434ab765746ac72c910, type: 3}
+      propertyPath: DeadParticle
+      value: 
+      objectReference: {fileID: 3106592897092609927, guid: 330fa5bb4e65a924999b6f2365ef30e2, type: 3}
+    - target: {fileID: 8807623584165039417, guid: c490658654f0f434ab765746ac72c910, type: 3}
+      propertyPath: JumpParticle
+      value: 
+      objectReference: {fileID: 5228469971706179642, guid: aa66e0aab3ca49640a2302a0b12fb63d, type: 3}
+    - target: {fileID: 8807623584165039417, guid: c490658654f0f434ab765746ac72c910, type: 3}
+      propertyPath: WalkParticle
+      value: 
+      objectReference: {fileID: 8075649412052579996, guid: 4b0b6f6f16607dc41a49467350e97076, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c490658654f0f434ab765746ac72c910, type: 3}
 --- !u!4 &1773615020 stripped

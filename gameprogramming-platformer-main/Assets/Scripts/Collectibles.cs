@@ -6,6 +6,7 @@ public class Collectibles : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private SoCollectibles collectibleObject;
     [SerializeField] private PlayerAudioController audioController;
+    [SerializeField] private ParticleSystem CollectiblesDust;
     
     private CollectibleType _collectibleType;
     private bool _isRespawnable;
@@ -18,7 +19,8 @@ public class Collectibles : MonoBehaviour
     public CollectibleType GetCollectibleInfoOnContact()
     {
         gameObject.SetActive(false);
-
+        CollectiDust();
+        
         if (_isRespawnable)
         {
             collectibleSpawner.StartRespawningCountdown();
@@ -33,5 +35,10 @@ public class Collectibles : MonoBehaviour
         spriteRenderer.sprite = collectibleObject.GetSprite();
         _collectibleType = collectibleObject.GetCollectibleType();
         _isRespawnable = collectibleObject.GetRespawnable();
+    }
+
+    public void CollectiDust()
+    {
+        CollectiblesDust.Play();
     }
 }
